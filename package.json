@@ -1,0 +1,44 @@
+{
+  "name": "openreact",
+  "version": "1.0.0",
+  "description": "test de react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./src/index.html",
+    "lint": "eslint --fix src/**/*.{js,jsx}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMCASCANTE/openReact.git"
+  },
+  "author": "Carlos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CMCASCANTE/openReact/issues"
+  },
+  "homepage": "https://github.com/CMCASCANTE/openReact#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "yarn": "^1.22.19"
+  },   
+  "eslintConfig": {    
+      "extends": "airbnb",  
+      "env": {
+          "browser": true       
+      },    
+      "rules": {
+          "linebreak-style": "off"
+      }
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "parcel-bundler": "^1.12.5"
+  }
+}
