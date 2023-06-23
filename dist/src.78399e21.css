@@ -3,8 +3,8 @@
     margin-top: 3em;
     padding: 1em;
     width: 40%;
-    background-color: lightgray;
-    border: 0.3em outset lightgray;
+    background-color: rgb(235, 235, 235);
+    border: 0.3em outset rgb(235, 235, 235);
 }
 li {
     list-style: none;
