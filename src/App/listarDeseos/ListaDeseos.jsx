@@ -1,21 +1,34 @@
 // importaciones
 import React from 'react';
 import PropTypes from 'prop-types';
+import Deseo from './Deseo';
 
 // creacion del componente con atributos
-function ListaDeseos({ deseos, titulo }) {
+function ListaDeseos({ deseos, titulo, alCambiarDoneDeseos }) {
   return (
     <fieldset>
       <legend>{ titulo }</legend>
       <ul>
         {
           // recorremos el array de deseos creando una lista de elementos
+          // para cada elemento cargamos el componente Deseo
+          // y le damos los valores
           deseos
             .map(({ deseo, done }, i) => (
-              <li>
-                <input type="checkbox" name={deseo} id={i} checked={done} />
-                <label htmlFor={i} className={done ? 'linea_tachada' : ''}>{deseo}</label>
-              </li>
+              <Deseo
+                deseo={deseo}
+                key={deseo}
+                done={done}
+                id={i}
+                doneChange={(value) => {
+                  const actualizarDeseos = [...deseos];
+                  actualizarDeseos[i].done = value;
+                  // versión inicial (una lista)
+                  // alCambiarDoneDeseos(actualizarDeseos);
+                  // modificación para versión ampliada
+                  alCambiarDoneDeseos(actualizarDeseos[i]);
+                }}
+              />
             ))
           }
       </ul>
@@ -32,11 +45,13 @@ ListaDeseos.propTypes = {
     }),
   ),
   titulo: PropTypes.string.isRequired,
+  alCambiarDoneDeseos: PropTypes.func,
 };
 
 // creamos un valor por defecto para los valores del array ya que no los creamos como requeridos
 ListaDeseos.defaultProps = {
   deseos: [],
+  alCambiarDoneDeseos: () => {},
 };
 
 // exportamos el componente

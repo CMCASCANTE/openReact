@@ -28863,84 +28863,33 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"App/aniadirDeseos/InputDeseo.jsx":[function(require,module,exports) {
-"use strict";
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/react-dom/client.js":[function(require,module,exports) {
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-// importaciones
-
-// creacion del componente con sus elementos
-function InputDeseo() {
-  return /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("legend", null, "Nuevo deseo"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: "Introduce tu deseo"
-  }));
-}
-
-// exportamos el componente
-var _default = InputDeseo;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-  return bundleURL;
-}
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
+var m = require('react-dom');
+if ("development" === 'production') {
+  exports.createRoot = m.createRoot;
+  exports.hydrateRoot = m.hydrateRoot;
+} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function (c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
     }
-  }
-  return '/';
-}
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
   };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
+  exports.hydrateRoot = function (c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
     }
-    cssTimeout = null;
-  }, 50);
+  };
 }
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"App/App.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{"react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.13.1
  * react-is.development.js
  *
@@ -29871,7 +29820,122 @@ if ("development" !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = require('./factoryWithThrowingShims')();
 }
-},{"react-is":"../node_modules/react-is/index.js","./factoryWithTypeCheckers":"../node_modules/prop-types/factoryWithTypeCheckers.js"}],"App/listarDeseos/ListaDeseos.jsx":[function(require,module,exports) {
+},{"react-is":"../node_modules/react-is/index.js","./factoryWithTypeCheckers":"../node_modules/prop-types/factoryWithTypeCheckers.js"}],"App/aniadirDeseos/InputDeseo.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+var _propTypes = _interopRequireDefault(require("prop-types"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } // importaciones
+// creacion del componente con sus elementos
+// nuevoDeseoCreado es una funcion que vamos a crear para
+// realizar algo cuando añadamos un deseo y lo gestionamos como prop
+function InputDeseo(_ref) {
+  var nuevoDeseoCreado = _ref.nuevoDeseoCreado;
+  // creamos una variable de estado para guardar el valor del input
+  // de modo que cuando demos intro tenga guardado el valor
+  // y lo devuelva al padre con el valor y el done
+  var _useState = (0, _react.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    nuevoDeseo = _useState2[0],
+    setNuevoDeseo = _useState2[1];
+  return /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("legend", null, "Nuevo deseo"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Introduce tu deseo",
+    value: nuevoDeseo,
+    onChange: function onChange(e) {
+      return setNuevoDeseo(e.target.value);
+    },
+    onKeyUp: function onKeyUp(e) {
+      if (e.key === 'Enter' && nuevoDeseo.length) {
+        nuevoDeseoCreado({
+          done: false,
+          deseo: nuevoDeseo
+        });
+        setNuevoDeseo('');
+      }
+    }
+  }));
+}
+
+// Tipado de las props (en este caso por defecto y vacía)
+InputDeseo.propTypes = {
+  nuevoDeseoCreado: _propTypes.default.func
+};
+InputDeseo.defaultProps = {
+  nuevoDeseoCreado: function nuevoDeseoCreado() {}
+};
+
+// exportamos el componente
+var _default = InputDeseo;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+  return bundleURL;
+}
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+  return '/';
+}
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+    cssTimeout = null;
+  }, 50);
+}
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"App/App.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"App/listarDeseos/Deseo.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29883,24 +29947,85 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // importaciones
 
+// componente
+// creamos el elemento con las propiedades que vienen del padre
+// y añadimos una propiedad para avisar del cambio del estado de done
+function Deseo(_ref) {
+  var deseo = _ref.deseo,
+    done = _ref.done,
+    id = _ref.id,
+    doneChange = _ref.doneChange;
+  return /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    name: deseo,
+    id: id,
+    checked: done,
+    onChange: function onChange(e) {
+      return doneChange(e.target.checked);
+    }
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: id,
+    className: done ? 'linea_tachada' : ''
+  }, deseo));
+}
+
+// tipado
+Deseo.propTypes = {
+  deseo: _propTypes.default.string.isRequired,
+  done: _propTypes.default.bool.isRequired,
+  id: _propTypes.default.number.isRequired,
+  doneChange: _propTypes.default.func
+};
+Deseo.defaultProps = {
+  doneChange: function doneChange() {}
+};
+
+// exportación
+var _default = Deseo;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"App/listarDeseos/ListaDeseos.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _propTypes = _interopRequireDefault(require("prop-types"));
+var _Deseo = _interopRequireDefault(require("./Deseo"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } // importaciones
 // creacion del componente con atributos
 function ListaDeseos(_ref) {
   var deseos = _ref.deseos,
-    titulo = _ref.titulo;
+    titulo = _ref.titulo,
+    alCambiarDoneDeseos = _ref.alCambiarDoneDeseos;
   return /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("legend", null, titulo), /*#__PURE__*/_react.default.createElement("ul", null,
   // recorremos el array de deseos creando una lista de elementos
+  // para cada elemento cargamos el componente Deseo
+  // y le damos los valores
   deseos.map(function (_ref2, i) {
     var deseo = _ref2.deseo,
       done = _ref2.done;
-    return /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("input", {
-      type: "checkbox",
-      name: deseo,
+    return /*#__PURE__*/_react.default.createElement(_Deseo.default, {
+      deseo: deseo,
+      key: deseo,
+      done: done,
       id: i,
-      checked: done
-    }), /*#__PURE__*/_react.default.createElement("label", {
-      htmlFor: i,
-      className: done ? 'linea_tachada' : ''
-    }, deseo));
+      doneChange: function doneChange(value) {
+        var actualizarDeseos = _toConsumableArray(deseos);
+        actualizarDeseos[i].done = value;
+        // versión inicial (una lista)
+        // alCambiarDoneDeseos(actualizarDeseos);
+        // modificación para versión ampliada
+        alCambiarDoneDeseos(actualizarDeseos[i]);
+      }
+    });
   })));
 }
 
@@ -29910,33 +30035,45 @@ ListaDeseos.propTypes = {
     deseo: _propTypes.default.string,
     done: _propTypes.default.bool
   })),
-  titulo: _propTypes.default.string.isRequired
+  titulo: _propTypes.default.string.isRequired,
+  alCambiarDoneDeseos: _propTypes.default.func
 };
 
 // creamos un valor por defecto para los valores del array ya que no los creamos como requeridos
 ListaDeseos.defaultProps = {
-  deseos: []
+  deseos: [],
+  alCambiarDoneDeseos: function alCambiarDoneDeseos() {}
 };
 
 // exportamos el componente
 var _default = ListaDeseos;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"App/App.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","./Deseo":"App/listarDeseos/Deseo.jsx"}],"App/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 var _InputDeseo = _interopRequireDefault(require("./aniadirDeseos/InputDeseo"));
 require("./App.css");
 var _ListaDeseos = _interopRequireDefault(require("./listarDeseos/ListaDeseos"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-// importaciones
-
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } // importaciones
 // array con deseos indiciales
-var deseos = [{
+var deseosIniciales = [{
   deseo: 'Aprender Javascript',
   done: true
 }, {
@@ -29949,23 +30086,69 @@ var deseos = [{
 
 // componente principal
 function App() {
+  // creamos el array de deseos con estado y añadimos los inciales
+  // de este modo lo podemos modificar y renderizar de nuevo
+  // version de una sola lista
+  // const [deseos, setDeseos] = useState(deseosIniciales);
+  // ampliacion para tener dos listas
+  var _useState = (0, _react.useState)(deseosIniciales.filter(function (_ref) {
+      var done = _ref.done;
+      return done;
+    })),
+    _useState2 = _slicedToArray(_useState, 2),
+    deseosCompletos = _useState2[0],
+    setDeseosCompletos = _useState2[1];
+  var _useState3 = (0, _react.useState)(deseosIniciales.filter(function (_ref2) {
+      var done = _ref2.done;
+      return !done;
+    })),
+    _useState4 = _slicedToArray(_useState3, 2),
+    deseosIncompletos = _useState4[0],
+    setDeseosIncompletos = _useState4[1];
+
+  // añadimos los componentes al principal
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "general"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Mi lista de deseos"), /*#__PURE__*/_react.default.createElement(_InputDeseo.default, null), /*#__PURE__*/_react.default.createElement(_ListaDeseos.default, {
-    deseos: deseos.filter(function (_ref) {
-      var done = _ref.done;
-      return !done;
-    }),
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Mi lista de deseos"), /*#__PURE__*/_react.default.createElement(_InputDeseo.default, {
+    nuevoDeseoCreado: function nuevoDeseoCreado(deseo) {
+      return setDeseosIncompletos([deseo].concat(_toConsumableArray(deseosIncompletos)));
+    }
+  }), /*#__PURE__*/_react.default.createElement(_ListaDeseos.default
+  // version para solo una lista
+  // deseos={deseos}
+  // version para dos listas
+  , {
+    deseos: deseosIncompletos,
     titulo: "Deseos sin cumplir",
     check: false
+    // versión para solo una lista
+    // alCambiarDoneDeseos={setDeseos}
+    // versión para dos listas
+    ,
+    alCambiarDoneDeseos: function alCambiarDoneDeseos(deseo) {
+      setDeseosCompletos([deseo].concat(_toConsumableArray(deseosCompletos)));
+      setDeseosIncompletos(deseosIncompletos.filter(function (_ref3) {
+        var done = _ref3.done;
+        return !done;
+      }));
+    }
   }), /*#__PURE__*/_react.default.createElement(_ListaDeseos.default, {
-    deseos: deseos.filter(function (_ref2) {
-      var done = _ref2.done;
-      return done;
-    }),
+    deseos: deseosCompletos,
     titulo: "Deseos cumplidos",
-    check: true
-  }));
+    check: true,
+    alCambiarDoneDeseos: function alCambiarDoneDeseos(deseo) {
+      setDeseosIncompletos([deseo].concat(_toConsumableArray(deseosIncompletos)));
+      setDeseosCompletos(deseosCompletos.filter(function (_ref4) {
+        var done = _ref4.done;
+        return done;
+      }));
+    }
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: function onClick() {
+      return setDeseosCompletos(deseosCompletos.splice());
+    }
+  }, "Eliminar deseos cumplidos"));
 }
 
 // exportamos el componente principal para consumirlo desde el index
@@ -30011,15 +30194,25 @@ exports.default = _default;
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
-var _reactDom = _interopRequireDefault(require("react-dom"));
+var _client = require("react-dom/client");
 var _App = _interopRequireDefault(require("./App/App"));
 var _Test = _interopRequireDefault(require("./Test/Test"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Test.default, {
+var container = document.getElementById('root');
+var root = (0, _client.createRoot)(container);
+root.render( /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Test.default, {
   name: "Carlos",
   surname: "Martinez"
-}), /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App/App":"App/App.jsx","./Test/Test":"Test/Test.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+}), /*#__PURE__*/_react.default.createElement(_App.default, null)));
+
+// ReactDOM.render(
+//   <>
+//     <Test name="Carlos" surname="Martinez" />
+//     <App />
+//   </>,
+//   document.getElementById('root'),
+// );
+},{"react":"../node_modules/react/index.js","react-dom/client":"../node_modules/react-dom/client.js","./App/App":"App/App.jsx","./Test/Test":"Test/Test.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
